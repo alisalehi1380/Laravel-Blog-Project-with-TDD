@@ -34,7 +34,7 @@ Here is Blog Database Schema
 ## User Types
 _we have these user types_
 
-|#|User TYpe|Description|
+|#|User Type|Description|
 |---|---|---|
 |1|`admin`|admin can define a writer| 
 |2|`writer`|writer can write posts|
