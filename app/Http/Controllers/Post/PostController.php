@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;

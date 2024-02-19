@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Requests\Writer;
+namespace App\Http\Controllers\Post\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class EditPostRequest extends FormRequest
+class DeletePostRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('view', $this->route('post'));
+        return Gate::allows('delete',$this->route('post'));
     }
 
     public function rules()

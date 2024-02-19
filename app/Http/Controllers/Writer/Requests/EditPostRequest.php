@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Controllers\Writer\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class ShowCommentsPostRequest extends FormRequest
+class EditPostRequest extends FormRequest
 {
     public function authorize()
     {
-        return (bool) Gate::authorize('view' , $this->route('post'));
+        return Gate::allows('view', $this->route('post'));
     }
 
     public function rules()
