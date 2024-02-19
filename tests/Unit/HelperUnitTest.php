@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 class HelperUnitTest extends TestCase
 {
-
     public function test_slug()
     {
         $title = 'money and tech';
