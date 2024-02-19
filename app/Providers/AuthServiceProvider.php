@@ -17,7 +17,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Post::class => WriterPostPolicy::class
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -28,14 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-
         Gate::define('admin', function () {
-            return Auth::user()
-                       ->isAdmin();
+            return Auth::user()->isAdmin();
         });
-
-
-        //
     }
 }
