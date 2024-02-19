@@ -19,13 +19,10 @@
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "friendsofphp/php-cs-fixer": "^3.13",
         "laravel/sail": "^1.0.1",
         "laravel/ui": "^3.4",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpro/grumphp": "^1.16",
-        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
@@ -68,7 +65,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "phpro/grumphp": true
+            "phpro/grumphp": false
         }
     },
     "minimum-stability": "dev",

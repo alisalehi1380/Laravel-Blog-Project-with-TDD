@@ -1,9 +1,0 @@
-grumphp:
-  tasks: {
-    phpstan: {
-      level: 3,
-    },
-    phpunit: {
-      always_execute: false,
-    },
-  }
