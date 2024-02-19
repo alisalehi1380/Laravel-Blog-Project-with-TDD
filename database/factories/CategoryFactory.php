@@ -8,11 +8,6 @@ use Illuminate\Support\Str;
 
 class CategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
         $title = 'cat ' . $this->faker->jobTitle;

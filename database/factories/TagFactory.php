@@ -8,14 +8,8 @@ use Illuminate\Support\Str;
 
 class TagFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
-
         $title = 'tag ' . $this->faker->word;
         return [
             Tag::col_title => $title,
