@@ -4,47 +4,50 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Post extends Model
 {
     use HasFactory;
-
-    const col_id = 'id';
-    const col_title = 'title';
-    const col_slug = 'slug';
-    const col_body = 'body';
-    const col_writer_id = 'writer_id';
-    const col_cover = 'cover';
-
+    
+    const TITLE = 'title';
+    const SLUG = 'slug';
+    const BODY = 'body';
+    const WRITER_ID = 'writer_id';
+    const COVER = 'cover';
+    
     protected $fillable = [
-        self::col_writer_id,//user_id fk
-        self::col_title,
-        self::col_slug,
-        self::col_body,
-        self::col_cover
+        self::WRITER_ID,//user_id fk
+        self::TITLE,
+        self::SLUG,
+        self::BODY,
+        self::COVER
     ];
-
-    public function writer()
+    
+    public function writer(): BelongsTo
     {
-        return $this->belongsTo(User::class, self::col_writer_id, User::col_id);
+        return $this->belongsTo(User::class, self::WRITER_ID);
     }
-
-    public function comments()
+    
+    public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'post_id', 'id');
+        return $this->hasMany(Comment::class, 'post_id');
     }
-
-    public function likes()
+    
+    public function likes(): MorphMany
     {
         return $this->morphMany(Like::class, 'likeable');
     }
-
-    public function tags()
+    
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'post_tag');
     }
-
-    public function categories()
+    
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'post_category');
     }

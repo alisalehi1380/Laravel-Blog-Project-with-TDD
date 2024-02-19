@@ -12,8 +12,8 @@ class CategoryFactory extends Factory
     {
         $title = 'cat ' . $this->faker->jobTitle;
         return [
-            Category::col_title => $title,
-            Category::col_slug => Str::slug($title)
+            Category::TITLE => $title,
+            Category::SLUG => Str::slug($title)
         ];
     }
 }

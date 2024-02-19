@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\Guest\PostController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Writer\WriterController;

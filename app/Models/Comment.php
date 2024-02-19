@@ -4,42 +4,44 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Comment extends Model
 {
     use HasFactory;
     
-    const col_id = 'id';
-    const col_user_id = 'user_id';
-    const col_post_id = 'post_id';
-    const col_reply_id = 'reply_id';
-    const col_show = 'show';
-    const col_text = 'text';
+    const USER_ID = 'user_id';
+    const POST_ID = 'post_id';
+    const REPLY_ID = 'reply_id';
+    const SHOW = 'show';
+    const TEXT = 'text';
     
     protected $fillable = [
-        self::col_user_id,
-        self::col_post_id,
-        self::col_reply_id,
-        self::col_show,
-        self::col_text,
+        self::USER_ID,
+        self::POST_ID,
+        self::REPLY_ID,
+        self::SHOW,
+        self::TEXT,
     ];
     
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
     
-    public function post()
+    public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
     
-    public function reply()
+    public function reply(): HasMany
     {
-        return $this->hasMany(Comment::class, self::col_reply_id);
+        return $this->hasMany(Comment::class, self::REPLY_ID);
     }
     
-    public function likes()
+    public function likes(): MorphMany
     {
         return $this->morphMany(Like::class, 'likeable');
     }

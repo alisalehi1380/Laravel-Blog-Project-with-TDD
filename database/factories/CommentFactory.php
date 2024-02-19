@@ -13,11 +13,11 @@ class CommentFactory extends Factory
     {
         return [
             
-            Comment::col_user_id  => User::factory()->user(),
-            Comment::col_post_id  => Post::factory(),
-            Comment::col_reply_id => null,
-            Comment::col_show     => true,
-            Comment::col_text     => $this->faker->text(100),
+            Comment::USER_ID  => User::factory()->user(),
+            Comment::POST_ID  => Post::factory(),
+            Comment::REPLY_ID => null,
+            Comment::SHOW     => true,
+            Comment::TEXT     => $this->faker->text(100),
         ];
     }
     
@@ -35,7 +35,7 @@ class CommentFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'c'
-                'reply_id' => User::type_writer,
+                'reply_id' => User::WRITER,
             ];
         });
     }*/

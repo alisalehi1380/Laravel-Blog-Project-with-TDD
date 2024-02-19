@@ -21,24 +21,24 @@ class UserTableSeeder extends Seeder
     private function createAdmin(): void
     {
         User::factory()->admin()->create([
-            User::col_email    => 'admin@a.b',
-            User::col_password => Hash::make('1234')
+            User::EMAIL    => 'admin@a.b',
+            User::PASSWORD => Hash::make('1234')
         ]);
     }
     
     private function createWriter(): void
     {
         User::factory()->writer()->create([
-            User::col_email    => 'writer@a.b',
-            User::col_password => Hash::make('1234')
+            User::EMAIL    => 'writer@a.b',
+            User::PASSWORD => Hash::make('1234')
         ]);
     }
     
     private function createNormallUser(): void
     {
         User::factory()->user()->create([
-            User::col_email    => 'user@a.b',
-            User::col_password => Hash::make('1234')
+            User::EMAIL    => 'user@a.b',
+            User::PASSWORD => Hash::make('1234')
         ]);
         
     }

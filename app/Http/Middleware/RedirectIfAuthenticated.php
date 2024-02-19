@@ -39,11 +39,11 @@ class RedirectIfAuthenticated
     private static function Redirect(?string $guard): void
     {
         switch (Auth::guard($guard)->user()->type) {
-            case User::type_admin:
+            case User::ADMIN:
                 dd('admin');
-            case User::type_writer:
+            case User::WRITER:
                 dd('wiriter');
-            case User::type_user:
+            case User::USER:
                 dd('normalluser');
 
             default:

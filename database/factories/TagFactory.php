@@ -12,8 +12,8 @@ class TagFactory extends Factory
     {
         $title = 'tag ' . $this->faker->word;
         return [
-            Tag::col_title => $title,
-            Tag::col_slug => Str::slug($title)
+            Tag::TITLE => $title,
+            Tag::SLUG => Str::slug($title)
         ];
     }
 }

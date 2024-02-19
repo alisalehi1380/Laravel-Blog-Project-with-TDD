@@ -70,8 +70,8 @@ class AuthenticationTest extends TestCase
 
 
         $writer = [
-            User::col_email    => 'writer@a.b',
-            User::col_password => '1234'
+            User::EMAIL    => 'writer@a.b',
+            User::PASSWORD => '1234'
         ];
 
         $resp = $this->post(route('login'), $writer);

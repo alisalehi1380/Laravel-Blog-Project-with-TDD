@@ -34,7 +34,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'type' => User::type_admin,
+                'type' => User::ADMIN,
             ];
         });
     }
@@ -43,7 +43,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'type' => User::type_writer,
+                'type' => User::WRITER,
             ];
         });
     }
@@ -52,7 +52,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'type' => User::type_user,
+                'type' => User::USER,
             ];
         });
     }

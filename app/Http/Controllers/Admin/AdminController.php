@@ -16,10 +16,10 @@ class AdminController extends Controller
     public function storeWriter(CreateWriterRequest $request)
     {
         User::query()->create([
-            User::col_name     => $request->name,
-            User::col_email    => $request->email,
-            User::col_password => Hash::make($request->name),
-            User::col_type     => User::type_writer
+            User::NAME     => $request->name,
+            User::EMAIL    => $request->email,
+            User::PASSWORD => Hash::make($request->name),
+            User::TYPE     => User::WRITER
         ]);
         
         return redirect(route('new.writer.admin'))->with('success', 'new Writer Created Successfully');
@@ -43,8 +43,8 @@ class AdminController extends Controller
         $slug = SLUG($request->title);
         
         Category::query()->create([
-            Category::col_title => $request->title,
-            Category::col_slug  => $slug
+            Category::TITLE => $request->title,
+            Category::SLUG  => $slug
         ]);
         
         return redirect(route('new.category.admin'))->with('success', 'new Category Created SuccessFully');
@@ -64,8 +64,8 @@ class AdminController extends Controller
     public function updateCategory(UpdateCategoryRequest $request, Category $category)
     {
         $category->update([
-            Category::col_title => $request->title,
-            Category::col_slug  => SLUG($request->title)
+            Category::TITLE => $request->title,
+            Category::SLUG  => SLUG($request->title)
         ]);
         
         return redirect(route('list.category.admin'))->with('success', 'category updated successfully');

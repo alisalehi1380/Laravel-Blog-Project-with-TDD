@@ -13,11 +13,11 @@ class PostFactory extends Factory
     {
         $title = $this->faker->jobTitle;
         return [
-            Post::col_writer_id => User::factory()->writer(),
-            Post::col_title     => $title,
-            Post::col_slug      => \Illuminate\Support\Str::slug($title),
-            Post::col_body      => $this->faker->paragraphs(10, true) . '\n' . $this->faker->paragraphs(20, true),
-            Post::col_cover     => $this->faker->imageUrl(640, 480, 'technology')
+            Post::WRITER_ID => User::factory()->writer(),
+            Post::TITLE     => $title,
+            Post::SLUG      => \Illuminate\Support\Str::slug($title),
+            Post::BODY      => $this->faker->paragraphs(10, true) . '\n' . $this->faker->paragraphs(20, true),
+            Post::COVER     => $this->faker->imageUrl(640, 480, 'technology')
         ];
     }
 }

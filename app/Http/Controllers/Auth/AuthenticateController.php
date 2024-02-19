@@ -20,14 +20,14 @@ class AuthenticateController extends Controller
         if (Auth::attempt($credentials)) {
             
             switch (Auth::user()->type) {
-                case User::type_admin:
+                case User::ADMIN:
                     return redirect(route('dashboard.admin'));
                 
-                case User::type_writer:
+                case User::WRITER:
                     
                     return redirect(route('dashboard.writer'));
                 
-                case User::type_user:
+                case User::USER:
                     //TODO درست کن وقتی نوبت یوزر عادی شد
                     return redirect(route("index.guest"));
                 
@@ -52,10 +52,10 @@ class AuthenticateController extends Controller
     {
         try {
             $user = User::query()->create([
-                User::col_name     => $request->name,
-                User::col_email    => $request->email,
-                User::col_password => Hash::make($request->password),
-                User::col_type     => User::type_user
+                User::NAME     => $request->name,
+                User::EMAIL    => $request->email,
+                User::PASSWORD => Hash::make($request->password),
+                User::TYPE     => User::USER
             ]);
             Auth::login($user);
             return redirect(route('index.guest'));

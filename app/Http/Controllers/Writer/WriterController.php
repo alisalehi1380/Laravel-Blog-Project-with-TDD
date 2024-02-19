@@ -34,10 +34,10 @@ class WriterController extends Controller
             $tags = $request->tags;
             $tag_ids = [];
             foreach ($tags as $tag) {
-                $tag_ids[] = Tag::query()->where(Tag::col_slug, SLUG($tag))->orWhere(Tag::col_title, $tag)
+                $tag_ids[] = Tag::query()->where(Tag::SLUG, SLUG($tag))->orWhere(Tag::TITLE, $tag)
                     ->firstOrCreate([
-                        Tag::col_slug  => SLUG($tag),
-                        Tag::col_title => $tag
+                        Tag::SLUG  => SLUG($tag),
+                        Tag::TITLE => $tag
                     ]);
             }
             
@@ -48,11 +48,11 @@ class WriterController extends Controller
             }
             
             $post = Post::query()->create([
-                Post::col_writer_id => Auth::id(),
-                Post::col_title     => $request->title,
-                Post::col_slug      => SLUG(rand(0, 3) . $request->title),
-                Post::col_cover     => $request->cover,
-                Post::col_body      => $request->body,
+                Post::WRITER_ID => Auth::id(),
+                Post::TITLE     => $request->title,
+                Post::SLUG      => SLUG(rand(0, 3) . $request->title),
+                Post::COVER     => $request->cover,
+                Post::BODY      => $request->body,
             ]);
             
             $post->categories()->saveMany($cat_ids);
@@ -72,7 +72,7 @@ class WriterController extends Controller
     public function showPostsList()
     {
         //TODO : complete me=> writer can see just its posts
-        $posts = Post::query()->where(Post::col_writer_id, Auth::id())->paginate(5);
+        $posts = Post::query()->where(Post::WRITER_ID, Auth::id())->paginate(5);
         
         return view('writer.list', compact('posts'));
     }
@@ -103,8 +103,8 @@ class WriterController extends Controller
                 $is_tag_exist = Tag::query()->where('title', $tag)->orWhere('slug', SLUG($request->slug))->get();
                 if ($is_tag_exist->count() === 0) {
                     $tag_id = Tag::query()->create([
-                        Tag::col_title => $tag,
-                        Tag::col_slug  => SLUG($tag)
+                        Tag::TITLE => $tag,
+                        Tag::SLUG  => SLUG($tag)
                     ]);
                     
                     //ذخیره آی دی تگ جدید ذخیره شده در جدول تگ به صورت کی ولیو
@@ -151,14 +151,14 @@ class WriterController extends Controller
     public function changeStateComment(Comment $comment)
     {
         $comment->update([
-            Comment::col_show => $comment->show ? false : true
+            Comment::SHOW => $comment->show ? false : true
         ]);
         return redirect()->back()->with('state', 'comment show state changed');
     }
     
     public function getWriterPosts(User $user)
     {
-        if (!$user->type === User::type_writer){ abort(404); };
+        if (!$user->type === User::WRITER){ abort(404); };
         $posts = $user->posts()->paginate(2);
         
         return view('postlist', compact('user', 'posts'));
