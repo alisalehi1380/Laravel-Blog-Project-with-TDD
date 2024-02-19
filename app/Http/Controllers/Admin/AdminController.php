@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Writer\Requests\CreateWriterRequest;
 use App\Http\Requests\createCategoryRequest;
-use App\Http\Requests\CreateWriterRequest;
-use App\Http\Requests\ListWriterRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Models\User;
@@ -38,7 +37,7 @@ class AdminController extends Controller
         return view('admin.writer.writerpostlists', compact('writer'));
     }
     
-    public function storeNewCategory(createCategoryRequest $request)
+    public function storeNewCategory(CreateCategoryRequest $request)
     {
         $slug = SLUG($request->title);
         

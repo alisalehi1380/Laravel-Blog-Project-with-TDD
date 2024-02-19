@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Guest\PostController;
+use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Writer\WriterController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 
-include "./auth/auth.php";
-include "./admin/admin.php";
-include "./writer/writer.php";
+include "auth/auth.php";
+include "admin/admin.php";
+include "writer/writer.php";
 
 Route::middleware('auth')->group(function () {
     Route::post('user/comment/add/{post}', [UserController::class, 'addComment'])->name('add.comment.user');

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Writer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreatePostRequest;
-use App\Http\Requests\DeletePostRequest;
-use App\Http\Requests\ShowCommentsPostRequest;
-use App\Http\Requests\UpdateWriterPostRequest;
-use App\Http\Requests\Writer\EditPostRequest;
+use App\Http\Controllers\Post\Requests\CreatePostRequest;
+use App\Http\Controllers\Post\Requests\DeletePostRequest;
+use App\Http\Controllers\Post\Requests\ShowCommentsPostRequest;
+use App\Http\Controllers\Writer\Requests\UpdateWriterPostRequest;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
@@ -77,7 +76,7 @@ class WriterController extends Controller
         return view('writer.list', compact('posts'));
     }
     
-    public function editWriterPost(EditPostRequest $request, Post $post)
+    public function editWriterPost(Requests\EditPostRequest $request, Post $post)
     {
         $categories = Category::all();
         //TODO create request(policy) writer just can edit its posts

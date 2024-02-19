@@ -3,13 +3,21 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\AddCommentRequest;
+use App\Http\Controllers\User\Repositories\Eloquent\UserRepository;
+use App\Http\Controllers\User\Requests\AddCommentRequest;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    private $userRepository;
+    
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+    
     public function addComment(AddCommentRequest $request, Post $post)
     {
         try {
@@ -22,5 +30,11 @@ class UserController extends Controller
             Log::error($e);
             dd($e);
         }
+    }
+    
+    public function index()
+    {
+        $data = $this->userRepository->all();
+        return response()->json($data);
     }
 }
