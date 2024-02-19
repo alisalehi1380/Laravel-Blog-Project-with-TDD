@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         Schema::disableForeignKeyConstraints();
@@ -22,8 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->createUser();
         $this->createCategory();
         $this->createTag();
-
-        //$this->call(CommentSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
@@ -37,13 +30,10 @@ class DatabaseSeeder extends Seeder
     private function createCategory(): void
     {
         Category::factory(10)->create();
-        $this->command->info('---*** Categories Table Just Filled');
     }
 
     private function createTag(): void
     {
         Tag::factory(10)->create();
-        $this->command->info('---*** Tags Table Just Filled');
-
     }
 }
