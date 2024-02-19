@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Controllers\Auth\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterNormallUserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
