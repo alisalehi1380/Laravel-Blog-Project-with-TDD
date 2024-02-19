@@ -16,7 +16,6 @@ class UserTableSeeder extends Seeder
         $this->createAdmin();
         $this->createWriter();
         $this->createNormallUser();
-        
     }
     
     private function createAdmin(): void
