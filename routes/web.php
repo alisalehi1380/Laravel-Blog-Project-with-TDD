@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\Guest\PostController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Writer\WriterController;
@@ -10,9 +10,9 @@ use UniSharp\LaravelFilemanager\Lfm;
 
 Route::view('/login', 'auth.login')->name('show.login')->middleware('guest');
 Route::post('/login', [AuthenticateController::class, 'login'])->name('login');
-Route::any('/logout', [AuthenticateController::class, 'logout'])->name('logout')->middleware('auth');
-Route::get('/register', [AuthenticateController::class, 'showRegisterForm'])->name('register');
+Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [AuthenticateController::class, 'register'])->name('register.normall.user');
+Route::any('/logout', [AuthenticateController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'can:admin']], function () {
     Route::get('/dashboard', [AdminController::class, 'showDashboard'])->name('dashboard.admin');
