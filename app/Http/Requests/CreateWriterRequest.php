@@ -17,7 +17,6 @@ class CreateWriterRequest extends FormRequest
             'name'                  => 'required|min:4|string',
             'email'                 => 'required|email|unique:users,email',
             'password'              => 'required|min:4|confirmed',
-
         ];
     }
 }
