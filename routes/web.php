@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'can:admin']], funct
     Route::put('/category/update/{category}', [AdminController::class, 'updateCategory'])->name('update.category.admin');
 });
 Route::group(['prefix' => 'writer', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard', [WriterController::class, 'showDashboard'])->name('dashboard.writer');
+    Route::view('/dashboard', 'writer.index')->name('dashboard.writer');
     Route::get('/post/new', [WriterController::class, 'newPost'])->name('new.post.writer');
     Route::post('/post/store', [WriterController::class, 'storePost'])->name('store.post.writer');
     Route::get('/post/list', [WriterController::class, 'showPostsList'])->name('list.post.writer');

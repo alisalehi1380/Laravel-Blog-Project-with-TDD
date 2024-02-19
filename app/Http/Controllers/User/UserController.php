@@ -10,23 +10,14 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-
-
     public function addComment(AddCommentRequest $request, Post $post)
     {
         try {
-
-            $post->comments()
-                 ->create([
-                     'user_id' => Auth::id(),
-                     'text'    => $request->text
-                 ]);
-
-            return redirect()
-                ->back()
-                ->with('comment-succ', 'comment addedd successfully');
-
-
+            $post->comments()->create([
+                'user_id' => Auth::id(),
+                'text'    => $request->text
+            ]);
+            return redirect()->back()->with('comment-succ', 'comment addedd successfully');
         } catch (\Exception $e) {
             Log::error($e);
             dd($e);
